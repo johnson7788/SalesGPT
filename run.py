@@ -14,7 +14,7 @@ if __name__ == "__main__":
         env_file = f.readlines()
     envs_dict = {key.strip("'") :value.strip("\n") for key, value in [(i.split('=')) for i in env_file]}
     os.environ['OPENAI_API_KEY'] = envs_dict['OPENAI_API_KEY']
-
+    os.environ['OPENAI_PROXY'] = 'http://127.0.0.1:7890'
     # Initialize argparse
     parser = argparse.ArgumentParser(description='Description of your program')
 
@@ -31,7 +31,7 @@ if __name__ == "__main__":
     verbose = args.verbose
     max_num_turns = args.max_num_turns
 
-    llm = ChatOpenAI(temperature=0.2)
+    llm = ChatOpenAI(temperature=0.2, openai_proxy='http://127.0.0.1:7890')
     
     if config_path=='':
         print('No agent config specified, using a standard config')

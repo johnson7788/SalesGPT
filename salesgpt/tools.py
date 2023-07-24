@@ -3,7 +3,7 @@ from langchain.chains import RetrievalQA
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.llms import OpenAI
 from langchain.text_splitter import CharacterTextSplitter
-from langchain.vectorstores import Chroma
+from langchain.vectorstores import Chroma,Weaviate
 
 
 def setup_knowledge_base(product_catalog: str = None):
@@ -19,8 +19,8 @@ def setup_knowledge_base(product_catalog: str = None):
 
     llm = OpenAI(temperature=0)
     embeddings = OpenAIEmbeddings()
-    docsearch = Chroma.from_texts(
-        texts, embeddings, collection_name="product-knowledge-base"
+    docsearch = Weaviate.from_texts(
+        texts, embeddings, collection_name="product-knowledge-base",weaviate_url="http://192.168.50.189:8080"
     )
 
     knowledge_base = RetrievalQA.from_chain_type(
