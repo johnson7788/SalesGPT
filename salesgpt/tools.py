@@ -1,6 +1,7 @@
 from langchain.agents import Tool
 from langchain.chains import RetrievalQA
 from langchain.embeddings.openai import OpenAIEmbeddings
+from langchain.embeddings import FakeEmbeddings
 from langchain.llms import OpenAI
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import Chroma,Weaviate
@@ -18,7 +19,8 @@ def setup_knowledge_base(product_catalog: str = None):
     texts = text_splitter.split_text(product_catalog)
 
     llm = OpenAI(temperature=0)
-    embeddings = OpenAIEmbeddings()
+    # embeddings = OpenAIEmbeddings()
+    embeddings = FakeEmbeddings(size=768)
     docsearch = Weaviate.from_texts(
         texts, embeddings, collection_name="product-knowledge-base",weaviate_url="http://192.168.50.189:8080"
     )
