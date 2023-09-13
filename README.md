@@ -20,21 +20,29 @@ Please send an email to [the repo author](mailto:filipmichalsky@gmail.com).
 ## :red_circle: Latest News
 
 - Sales Agent can now take advantage of **tools**, such as look up products in a product catalog!
+- SalesGPT is now compatible with [LiteLLM](https://github.com/BerriAI/litellm), choose any closed/open-sourced LLM to work with SalesGPT! Thanks to LiteLLM maintainers for this contribution!
 
-### Demo: SalesGPT Outbound Prospecting: A New Way to Sell? 🤔
+### Demo: Outbound Prospecting from Crusty AI: A New Way to Sell? 🤔
 
-https://github.com/filip-michalsky/SalesGPT/assets/31483888/2b13ba28-4e07-41dc-a8bf-4084d25247ca
+<i>Crusty AI Sales Agent Phone Call Demo - Powered by SalesGPT</i>
+
+<div>
+    <a href="https://www.loom.com/share/f0fac42954904471b266980e4948b07d">
+      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/f0fac42954904471b266980e4948b07d-with-play.gif">
+    </a>
+  </div>
+
 
 ## Quickstart
 
 ```python
 import os
 from salesgpt.agents import SalesGPT
-from langchain.chat_models import ChatOpenAI
+from langchain.chat_models import ChatLiteLLM
 
 os.environ['OPENAI_API_KEY'] = 'sk-xxx' # fill me in
 
-llm = ChatOpenAI(temperature=0.4)
+llm = ChatLiteLLM(temperature=0.4, model_name="gpt-3.5-turbo") # select your model
                             
 sales_agent = SalesGPT.from_llm(llm, use_tools=True, verbose=False,
                             product_catalog = "examples/sample_product_catalog.txt",
@@ -121,7 +129,7 @@ As such, this agent can have a natural sales conversation with a prospect and be
 
 ## Installation
 
-Make sure your have a python 3.10+ and run:
+Make sure your have a **python 3.10+** and run:
 
 `pip install -r requirements.txt`
 
@@ -141,6 +149,13 @@ To get a feel for a conversation with the AI Sales agent, you can run:
 
 from your terminal.
 
+## Deployment
+
+We have a SalesGPT deployment demo via FastAPI.
+
+Please refer to [README-api.md](https://github.com/filip-michalsky/SalesGPT/blob/main/README-api.md) for instructions!
+
+
 ## Contact Us
 
 For questions, you can [contact the repo author](mailto:filipmichalsky@gmail.com).
@@ -150,11 +165,16 @@ Follow me at [@FilipMichalsky](https://twitter.com/FilipMichalsky)
 
 ## SalesGPT Roadmap
 
-
+- [high priority] Sell your soul.
+- [high priority] Improve reliability of the parser [issue here](https://github.com/filip-michalsky/SalesGPT/issues/26) and [here](https://github.com/filip-michalsky/SalesGPT/issues/25)
+- Add example implementation of OpenAI functions agent[issue here](https://github.com/filip-michalsky/SalesGPT/issues/17)
+- Add support for multiple tools [issue here](https://github.com/filip-michalsky/SalesGPT/issues/10)
+- Add an agent controller for when stages need to be traversed linearly without skips [issue here](https://github.com/filip-michalsky/SalesGPT/issues/19)
+- Add `tool_getter` to choose a tool based on vector distance to the tasks needed to be done
+- What tools should the agent have? (e.g., the ability to search the internet)
 - Add the ability of Sales Agent to interact with AI plugins on your website (.well-known/ai-plugin.json)
 
-- What tools should the agent have? (e.g., the ability to search the internet)
-
+~~-- [high priority] Add support for multiple LLMs backends [PR in progress here](https://github.com/filip-michalsky/SalesGPT/pull/36)~~-
 ~~-
  Add the ability to stop generation when user interupts the agent~~
 
