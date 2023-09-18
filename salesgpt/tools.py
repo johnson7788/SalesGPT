@@ -22,7 +22,7 @@ def setup_knowledge_base(product_catalog: str = None):
     # embeddings = OpenAIEmbeddings()
     embeddings = FakeEmbeddings(size=768)
     docsearch = Weaviate.from_texts(
-        texts, embeddings, collection_name="product-knowledge-base",weaviate_url="http://192.168.50.189:8080"
+        texts, embeddings, index_name="salesgpt",weaviate_url="http://192.168.50.209:8080"
     )
 
     knowledge_base = RetrievalQA.from_chain_type(

@@ -34,7 +34,7 @@ def time_logger(func):
         result = func(*args, **kwargs)  # Function execution
         end_time = time.time()  # End time after function execution
         execution_time = end_time - start_time  # Calculate execution time
-        logger.info(f"Running {func.__name__}: --- {execution_time} seconds ---")
+        # logger.info(f"Running {func.__name__}: --- {execution_time} seconds ---")
         return result
 
     return wrapper

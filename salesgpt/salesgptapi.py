@@ -62,9 +62,9 @@ class SalesGPTAPI:
         sales_agent.step()
 
         # end conversation
-        if "<END_OF_CALL>" in sales_agent.conversation_history[-1]:
+        if "<END_OF_CHAT>" in sales_agent.conversation_history[-1]:
             print("Sales Agent determined it is time to end the conversation.")
-            return "<END_OF_CALL>"
+            return "<END_OF_CHAT>"
 
         reply = sales_agent.conversation_history[-1]
 
