@@ -28,7 +28,7 @@ class SalesConvoOutputParser(AgentOutputParser):
             ## TODO - this is not entirely reliable, sometimes results in an error.
             return AgentFinish(
                 {
-                    "output": "I apologize, I was unable to find the answer to your question. Is there anything else I can help with?"
+                    "output": "对比起，我暂时不能回答你的问题，你尝试可以换个其它问题"
                 },
                 text,
             )
