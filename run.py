@@ -66,7 +66,7 @@ if __name__ == "__main__":
 
         # end conversation
         if "<END_OF_CHAT>" in sales_agent.conversation_history[-1]:
-            print("Sales Agent determined it is time to end the conversation.")
+            print("Agent determined it is time to end the conversation.")
             break
         human_input = input("Your response: ")
         sales_agent.human_step(human_input)
