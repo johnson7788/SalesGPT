@@ -33,7 +33,7 @@ if __name__ == "__main__":
     verbose = args.verbose
     max_num_turns = args.max_num_turns
     use_tools = args.use_tools
-
+    print("使用LiteLLM初始化llm")
     llm = ChatLiteLLM(temperature=0.2)
     if config_path == "":
         print("No agent config specified, using a standard config")

@@ -20,7 +20,8 @@ def setup_knowledge_base(product_catalog: str = None):
 
     llm = OpenAI(temperature=0)
     # embeddings = OpenAIEmbeddings()
-    embeddings = FakeEmbeddings(size=768)
+    # embeddings = FakeEmbeddings(size=768)
+    embeddings = None
     docsearch = Weaviate.from_texts(
         texts, embeddings, index_name="salesgpt",weaviate_url="http://192.168.50.209:8080"
     )
