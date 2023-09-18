@@ -52,7 +52,7 @@ if __name__ == "__main__":
         with open(config_path, "r", encoding="UTF-8") as f:
             config = json.load(f)
         sales_agent = SalesGPT.from_llm(llm, use_tools=use_tools, verbose=verbose, **config)
-
+    # 设置对话的历史
     sales_agent.seed_agent()
     print("=" * 10)
     cnt = 0

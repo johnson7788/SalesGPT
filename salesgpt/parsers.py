@@ -22,13 +22,17 @@ class SalesConvoOutputParser(AgentOutputParser):
             return AgentFinish(
                 {"output": text.split(f"{self.ai_prefix}:")[-1].strip()}, text
             )
+        if self.ai_prefix in text:
+            return AgentFinish(
+                {"output": text}, text
+            )
         regex = r"Action: (.*?)[\n]*Action Input: (.*)"
         match = re.search(regex, text)
         if not match:
             ## TODO - this is not entirely reliable, sometimes results in an error.
             return AgentFinish(
                 {
-                    "output": "对比起，我暂时不能回答你的问题，你尝试可以换个其它问题"
+                    "output": "对不起，我暂时不能回答您的问题，你尝试可以换个其它问题。"
                 },
                 text,
             )
