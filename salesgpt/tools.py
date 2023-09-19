@@ -6,7 +6,6 @@ from langchain.llms import OpenAI
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import Chroma,Weaviate
 
-
 def setup_knowledge_base(product_catalog: str = None):
     """
     We assume that the product catalog is simply a text string.
